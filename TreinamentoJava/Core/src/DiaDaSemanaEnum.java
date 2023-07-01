@@ -1,0 +1,4 @@
+
+public enum DiaDaSemanaEnum {
+    SEGUNDA_FEIRA, TERCA, QUARTA, QUINTA, SEXTA, SABADO, DOMINGO;
+}
