@@ -1,32 +1,26 @@
 package OrientacaoObjeto.cap19;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConexaoFactory {
+
     private final static String urlBd = "jdbc:mysql://localhost:3306/";
+    private final static String user = "root";
+    private final static String senha = "123456";
 
-    static String user = "root";
-
-    private static Connection connection;
-    private static Statement statement;
-    private static ResultSet resultSet;
-
-    public static Connection conectar() throws SQLException {
-
-        connection = DriverManager.getConnection(urlBd);
-        System.out.println("Conex„o realizada com sucesso!");
-        return connection;
-
+    public static Connection conectar() {
+        String url = urlBd;
+        try {
+            Connection connection = DriverManager.getConnection(url, user, senha);
+            System.out.println("conex√£o realizado com sucesso!!!!!");
+//            connection.setAutoCommit(false);
+            return connection;
+        } catch (SQLException s) {
+            throw new RuntimeException("falha ao conectar com o banco: " + s);
+        }
     }
 
-    public static void fechar() {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-            } catch(SQLException e){
-                throw new RuntimeException(e);
-            }
-        }
 }
 

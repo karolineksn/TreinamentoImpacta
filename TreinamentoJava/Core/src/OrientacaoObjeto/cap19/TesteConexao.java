@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class TesteConexao {
 
-    private final static String urlBd = "jdbc:mysql://localhost:3306/";
+    private final static String urlBd = "jdbc:mysql://localhost:3306/impacta?user=root&password=123456";
 
     private static Connection connection;
     private static Statement statement;
@@ -23,7 +23,7 @@ public class TesteConexao {
                 String telefone = resultSet.getString("TELEFONE");
                 System.out.println(nome + " " + cpf + " " + telefone);
             }
-            System.out.println("Fim da busca no banco");
+            System.out.println("fim da busca no banco");
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -32,6 +32,6 @@ public class TesteConexao {
     public static void openDb() throws SQLException {
         connection = DriverManager.getConnection(urlBd);
         statement = connection.createStatement();
-        System.out.println("Conex„o realizada com sucesso .....");
+        System.out.println("conex√£o realizada com sucesso .....");
     }
 }
